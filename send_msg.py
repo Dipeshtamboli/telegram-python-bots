@@ -1,9 +1,10 @@
+import os
 import requests
 
 def telegram_bot_sendtext(bot_message):
     
-    bot_token = '1734272666:AAHjHVM5GITeOp7FJRrj67wt_I4lj7WTCkM'
-    bot_chatID = '1685677293'
+    bot_token = os.environ["bot_token"]
+    bot_chatID = os.environ["bot_chatID"]
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
 
     response = requests.get(send_text)
@@ -11,13 +12,12 @@ def telegram_bot_sendtext(bot_message):
     return response.json()
     
 
-# test = telegram_bot_sendtext("Testing Telegram bot")
+test = telegram_bot_sendtext("Testing Telegram bot with environ")
 # print(test)
 
 from telethon import TelegramClient, events, sync
-
-api_id = "7186968"
-api_hash = 'ab0b161427f3dd23f6845f8614b7b928'
+api_id = os.environ["api_id"]
+api_hash = os.environ["api_hash"]
 
 client = TelegramClient('anon2',
                     api_id,
@@ -27,4 +27,4 @@ client.start()
 
 destination_channel_username='+917397925455'
 entity=client.get_entity(destination_channel_username)
-client.send_message(entity=entity,message="Hi")
+client.send_message(entity=entity,message=f"Hi {destination_channel_username}")

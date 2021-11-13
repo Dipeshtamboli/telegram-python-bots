@@ -1,8 +1,8 @@
 from telethon import TelegramClient, events, sync
-
+import os
 # Remember to use your own values from my.telegram.org!
-api_id = "7186968"
-api_hash = 'ab0b161427f3dd23f6845f8614b7b928'
+api_id = os.environ["api_id"]
+api_hash = os.environ["api_hash"]
 client = TelegramClient('anon', api_id, api_hash)
 
 @client.on(events.NewMessage(chats='noob_bot'))
