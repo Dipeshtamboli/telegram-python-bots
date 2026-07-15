@@ -26,6 +26,6 @@ client = TelegramClient('anon2',
                     )
 client.start()
 
-destination_channel_username='+917397925455'
+destination_channel_username='+10000000000'
 entity=client.get_entity(destination_channel_username)
 client.send_message(entity=entity,message=f"Hi {destination_channel_username}")
